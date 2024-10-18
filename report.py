@@ -1,8 +1,7 @@
 from datetime import date
 from typing import List, Optional
 from api import *
-import forms13f
-from forms13f.util import quarterToPeriodOfReport
+import forms13f 
 
 
 class ReportHeader:
@@ -80,4 +79,21 @@ def getQuarterReport(quarter, cik):
     quarter_report = QuarterReport(header=header, holdings=holdings)
     
     return quarter_report
+
+def quarterToPeriodOfReport(quarter):
+    year, q = quarter.split('-Q')
+    year = int(year)
+    quarter_end_dates = {
+        '1': '-03-31',
+        '2': '-06-30',
+        '3': '-09-30',
+        '4': '-12-31'
+    }
+    
+    if q in quarter_end_dates:
+        return f"{year}{quarter_end_dates[q]}"
+    else:
+        raise ValueError("Invalid quarter format. Use format YYYY-Q<1-4>.")
+
+
 

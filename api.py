@@ -1,7 +1,5 @@
 
-import forms13f
-from forms13f.util import quarterToPeriodOfReport
-from forms13f.rest import ApiException
+import forms13f 
 from collections import defaultdict
 
 
