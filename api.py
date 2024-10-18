@@ -84,6 +84,7 @@ def getHoldings(cik, accession_number):
     holdings_by_cusip = defaultdict(lambda: {
         'accession_number': None,
         'cik': None,
+        'ticker' : None,
         'name_of_issuer': None,
         'title_of_class': None,
         'cusip': None,
@@ -104,6 +105,7 @@ def getHoldings(cik, accession_number):
             holdings_by_cusip[cusip]['name_of_issuer'] = holding.name_of_issuer
             holdings_by_cusip[cusip]['title_of_class'] = holding.title_of_class
             holdings_by_cusip[cusip]['cusip'] = holding.cusip
+            holdings_by_cusip[cusip]['ticker'] = holding.ticker
             holdings_by_cusip[cusip]['ssh_prnamt_type'] = holding.ssh_prnamt_type
             holdings_by_cusip[cusip]['investment_discretion'] = holding.investment_discretion
         
@@ -121,6 +123,7 @@ def getHoldings(cik, accession_number):
             name_of_issuer=holding['name_of_issuer'],
             title_of_class=holding['title_of_class'],
             cusip=holding['cusip'],
+            ticker=holding['ticker'],
             value=holding['value'],
             ssh_prnamt=holding['ssh_prnamt'],
             ssh_prnamt_type=holding['ssh_prnamt_type'],
